@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/stuk-po-steklu-11.mp3-19f1eee31436e2768a5b8228a4f93eb3.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/stuk-po-steklu-11.mp3"
+dest_files=[ "res://.import/stuk-po-steklu-11.mp3-19f1eee31436e2768a5b8228a4f93eb3.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

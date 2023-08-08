@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/game_over.mp3-047cfcbcdb1a4bd98505c72dd749f39f.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/game_over.mp3"
+dest_files=[ "res://.import/game_over.mp3-047cfcbcdb1a4bd98505c72dd749f39f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

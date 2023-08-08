@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/Fonts/perfectdosvga437.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Sample.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Score.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Obstacles1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/People.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/PeopleSpawner.tscn" type="PackedScene" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+outline_color = Color( 0, 0.0343933, 0.191406, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 1254, 23 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 1254, 25 )
+
+[node name="Sample" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.694118, 1, 1 )
+
+[node name="Obstacles1" parent="." instance=ExtResource( 5 )]
+
+[node name="Peoples" type="Node2D" parent="."]
+
+[node name="People" parent="Peoples" instance=ExtResource( 6 )]
+position = Vector2( 306, 165 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 50, 48 )
+z_index = 1
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Score" type="Label" parent="CanvasLayer2"]
+anchor_right = 1.0
+margin_bottom = 16.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Миссия убрать телефоны "
+align = 1
+script = ExtResource( 3 )
+
+[node name="Sky" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sky"]
+position = Vector2( 1238, -368 )
+shape = SubResource( 2 )
+
+[node name="PeopleSpawner" parent="." instance=ExtResource( 7 )]
+position = Vector2( 360, 165 )
+
+[node name="Zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Zone"]
+position = Vector2( 1238, 217 )
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="Zone" to="." method="_on_Zone_body_entered"]
