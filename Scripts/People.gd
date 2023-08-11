@@ -25,16 +25,18 @@ func _ready():
 
 func _physics_process(delta):
 	translate(direction.normalized() * speed * delta)
+	if self.global_position.x <= -20:
+		anim.play("disappear")
+		yield(anim, "animation_finished")
+		queue_free()
+		
 	match state:
 		State.normal:
 			anim.play("walk")
 		State.phone:
 			anim.play("walk_with_phone")
 		State.poop:
-			anim.play("poop")
-
-func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
+			anim.play("poop") 
 
 
 func _on_People_area_entered(area):
